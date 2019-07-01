@@ -1,20 +1,38 @@
 'use strict';
 
-// alert("HELLO");
-console.log('Hello!');
+var money = prompt("Ваш бюджет на месяц: ");
 
-// let answer = confirm ("Are you her?");
+var time = prompt("Введите дату в формате YYYY-MM-DD:");
 
-// console.log(answer); 
+var appData = {
+    budjet: money,
+    timeData: time,
+    expenses: {
 
-// let answer = prompt("Are you her?");
+    },
+    optionalExpenses: {
 
-// console.log(answer);
+    },
+    income: {
 
-let incr = 10,
-    decr = 10;
+    },
 
+    savings: false,
 
-console.log(++incr);
-console.log(decr--);
-console.log(decr);
+}
+
+console.log(appData);
+/*Создать объект appData, который будет содержать такие данные:
+
+·      бюджет (передаем сюда переменную из п.2)
+
+·      данные времени - timeData (передаем сюда переменную из п.2)
+
+·      объект с обязательными расходами - expenses (смотри пункт 4)
+
+·      объект с необязательными расходами - optionalExpenses (оставляем пока пустым)
+
+·      массив данных с доп. доходом - income (оставляем пока пустым)
+
+·      свойство savings (выставляем его как false) */
+
