@@ -1,6 +1,6 @@
 'use strict';
 
-let money = prompt("Ваш бюджет на месяц?"),
+let money = +prompt("Ваш бюджет на месяц?"),
     time = prompt("Введите дату в формате YYYY-MM-DD:");
 
 let appData = {
@@ -12,29 +12,31 @@ let appData = {
     savings: false
 };
 
-/*4) Задать пользователю по 2 раза вопросы:
-    “Введите обязательную статью расходов в этом месяце”
-    “Во сколько обойдется?” */
+for (let i = 0; i < 2; i ++) {
+    let a = prompt("Введите обязательную статью расходов в этом месяце"),
+        b= prompt("Во сколько обойдется?");
 
-let costs1 = prompt("Введите обязательную статью расходов в этом месяце"),
-    count1= prompt("Во сколько обойдется?"),
-    costs2 = prompt("Введите обязательную статью расходов в этом месяце"),
-    count2 = prompt("Во сколько обойдется?");
+    if ( (typeof(a)) === 'string' && (typeof(a)) != null && (typeof(b)) != null
+        && a != '' && b != '' && a.length < 50) {
+            appData.expenses[a] = b;
+    } else {
 
+    }
 
-/*Записать ответы в объект expenses в формате: 
-    expenses: {
-    “ответ на первый вопрос” : “ответ на второй вопрос”
-    }*/
+};
 
-appData.expenses[costs1] = count1;
-appData.expenses[costs2] = count2;
+appData.moneyPerDay = appData.budjet / 30;
 
+//console.log(appData);
 
-console.log(appData);
+alert("Ваш ежедневный бюджет равен: " + appData.moneyPerDay + " рублей.");
 
-/* 5) Вывести на экран пользователя бюджет на 1 день (брать месяц за 30 дней, использовать alert) */
-
-var oneDayBudjet = appData.budjet / 30;
-alert("Ваш ежедневный бюджет равен: " + oneDayBudjet + " рублей.");
-
+if (appData.moneyPerDay < 100) {
+    console.log("Минимальный уровень достатка");
+} else if (appData.moneyPerDay > 100 && appData.moneyPerDay < 2000) {
+    console.log("Средний уровень достатка");
+} else if (appData.moneyPerDay > 100 && appData.moneyPerDay > 2000) {
+    console.log("Высокий уровень достатка");
+} else {
+    console.log("Ошибка");
+}
