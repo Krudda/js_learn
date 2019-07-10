@@ -73,11 +73,51 @@ let appData = {
         }
     },
     chooseIncome: function () {
-        let items = prompt("Что принесет дополнительный доход? (Перечислите через запятую)", '');
-        appData.income = items.split(", ");
-        appData.income.push(prompt("Может что то ещё?"));
-        appData.income.sort();
-    }
+        let items;
+        console.log(items);
+        while ( items == '' || (typeof(items)) !== "string" ) {
+            items = prompt("Что принесет дополнительный доход? (Перечислите через запятую)", '');
+            console.log(items);
+            if ( (typeof(items)) === 'string' && typeof(items) != null && items != '') {
+                appData.income = items.split(", ");
+             }
+        };
 
+        console.log(appData.income.length);
+
+        let dopItems = prompt("Может что то ещё?", '');
+        if ( dopItems != null && dopItems != '' && appData.income.length > 0) {
+            appData.income.push(dopItems);
+        } else if ( appData.income.length == undefined ) {
+            //appData.income = dopItems;
+            appData.income[0] = dopItems;
+        }
+
+        if ( appData.income.length > 1 )
+            appData.income.sort();
+
+        console.log(appData.income.length);
+        
+        if ( appData.income.length != undefined ) {
+            console.log("Способы доп.заработка: ");
+            appData.income.forEach(function(item, i) {
+                console.log( (i+1) + " : " + item);
+            }
+            )
+        }
+        // console.log("Способы доп.заработка: ");
+        // appData.income.forEach(function(item, i) {
+        //     console.log( (i+1) + " : " + item);
+        // }
+        // )
+    }
+    
 };
 
+appData.chooseIncome();
+console.log(appData.income);
+
+console.log("Наша программа включает в себя данные: ")
+for ( let prop in appData) {
+    console.log(prop + ": " + appData[prop]);
+}
